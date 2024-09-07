@@ -7,6 +7,7 @@ pipeline {
     
     stages {
         stage('git checkout') {
+                    when { expression {  params.action == 'create' } }
             steps {
                 // Add your build steps here
                 echo 'Checking out code..***********'
@@ -14,6 +15,7 @@ pipeline {
             }
         }
         stage('Unit Test Maven') {
+                    when { expression {  params.action == 'create' } }
             steps {
                 // Add your build steps here
                 echo 'Unit Test Maven..***********'
@@ -22,6 +24,7 @@ pipeline {
         }
         
         stage('Integration Test Maven') {
+                    when { expression {  params.action == 'create' } }
             steps {
                 // Add your test steps here
                 echo 'Integration Test Maven..**********'
@@ -30,10 +33,11 @@ pipeline {
         }
         
         stage('Deploy') {
+              when { expression {  params.action == 'create' } }
             steps {
                 // Add your deployment steps here
                 echo 'Deploying..**********'
-                
+                sh 'mvn clean'              
             }
         }
     }
