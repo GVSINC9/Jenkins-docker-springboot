@@ -22,23 +22,35 @@ pipeline {
                 sh 'mvn test'
             }
         }
+         stage('Sonar Code Analysis') {
+                    when { expression {  params.action == 'create' } }
+            steps {
+                // Add your deployment steps here
+                echo 'Sonar Code Analysis ****************..**********'
+                #sh 'mvn clean package sonar:sonar'              
+            }
+        }
         
         stage('Integration Test Maven') {
                     when { expression {  params.action == 'create' } }
             steps {
                 // Add your test steps here
                 echo 'Integration Test Maven..**********'
-                sh 'mvn verify -DskipUnitTests'
+                #sh 'mvn verify -DskipUnitTests'
             }
         }
         
-        stage('Deploy') {
-              when { expression {  params.action == 'create' } }
+        stage('Clean the saved snapshot') {
+                    when { expression {  params.action == 'delete' } }
             steps {
                 // Add your deployment steps here
-                echo 'Deploying..**********'
-                sh 'mvn clean'              
+                echo 'Deletering the snapshot jar filea ****************..**********'
+                #sh 'mvn clean'              
             }
         }
+        
+
+
+
     }
 }
