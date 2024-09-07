@@ -36,7 +36,7 @@ pipeline {
             steps {
                 // Add your test steps here
                 echo 'Integration Test Maven..**********'
-                #sh 'mvn verify -DskipUnitTests'
+               // sh 'mvn verify -DskipUnitTests'
             }
         }
         
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 // Add your deployment steps here
                 echo 'Deletering the snapshot jar filea ****************..**********'
-                #sh 'mvn clean'              
+                sh 'mvn clean'              
             }
         }
         
