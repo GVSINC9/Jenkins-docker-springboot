@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Add your deployment steps here
                 echo 'Sonar Code Analysis ****************..**********'
-                #sh 'mvn clean package sonar:sonar'              
+                sh 'mvn clean package sonar:sonar'              
             }
         }
         
