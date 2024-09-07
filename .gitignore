@@ -1,1 +1,6 @@
 .*/target/*
+.*/.mvn/*
+.*/.idea/*
+.*/.gradle/*
+.*/.settings/*
+.*/vscode/*
