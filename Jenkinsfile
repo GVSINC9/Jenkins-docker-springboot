@@ -26,8 +26,10 @@ pipeline {
                     when { expression {  params.action == 'create' } }
             steps {
                 // Add your deployment steps here
-                echo 'Sonar Code Analysis ****************..**********'
-                sh 'mvn clean package sonar:sonar -Dsonar.token=squ_24f44d8acdbbc0e89cfb6ae9d3aa0b0dbc3afb7e'              
+                echo 'Sonar Code Analysis ****************..********** ********'
+                withSonarQubeEnv('credentialsId:'sonarqube-api')
+                sh 'mvn clean package sonar:sonar 
+                // -Dsonar.token=squ_24f44d8acdbbc0e89cfb6ae9d3aa0b0dbc3afb7e'              
             }
         }
         
