@@ -27,9 +27,8 @@ pipeline {
             steps {
                 // Add your deployment steps here
                 echo 'Sonar Code Analysis ****************..********** ********'
-                withSonarQubeEnv('credentialsId:'sonarqube-api')
-                sh 'mvn clean package sonar:sonar 
-                // -Dsonar.token=squ_24f44d8acdbbc0e89cfb6ae9d3aa0b0dbc3afb7e'              
+                //withSonarQubeEnv('credentialsId:'sonarqube-api')
+                sh 'mvn clean package sonar:sonar -Dsonar.token=squ_24f44d8acdbbc0e89cfb6ae9d3aa0b0dbc3afb7e'              
             }
         }
         
